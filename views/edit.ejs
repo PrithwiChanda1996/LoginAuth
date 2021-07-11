@@ -1,0 +1,77 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3"><i class="fas fa-user"></i> Update user</h1>
+      <form action="/users/edit" method="POST">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            type="name"
+            id="firstName"
+            name="firstName"
+            class="form-control"
+            placeholder="Enter First Name"
+            value="<%= user.firstName %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            type="name"
+            id="lastName"
+            name="lastName"
+            class="form-control"
+            placeholder="Enter Last Name"
+            value="<%= user.lastName %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            disabled
+            placeholder="Enter Email"
+            value="<%= user.email %>"
+          />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            hidden
+            placeholder="Enter Email"
+            value="<%= user.email %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="mobileNo">Mobile No</label>
+          <input
+            type="name"
+            id="mobileNo"
+            name="mobileNo"
+            class="form-control"
+            placeholder="Enter Mobile No"
+            value="<%= user.mobileNo %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            type="name"
+            id="address"
+            name="address"
+            class="form-control"
+            placeholder="Enter Address"
+            value="<%= user.address %>"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block my-4">
+          Update
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

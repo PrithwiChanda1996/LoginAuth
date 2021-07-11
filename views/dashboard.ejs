@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/users/logout">Logout</a>
+        </li>
+      </ul>
+      <form class="d-flex" action="/search" method="POST">
+        <input
+          class="form-control me-2"
+          type="search"
+          name="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<p class="lead mb-3">Welcome <b><%= name %></b></p>
+<p class="mb-1">5 users each page</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile No</th>
+      <th scope="col">Address</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.forEach((user)=>{ %>
+
+    <tr>
+      <td><%= user.firstName %></td>
+      <td><%= user.lastName %></td>
+      <td><%= user.email %></td>
+      <td><%= user.mobileNo %></td>
+      <td><%= user.address %></td>
+      <td>
+        <a href="/users/edit?id=<%= user._id%>">
+          <button type="button" class="btn btn-success btn-sm">
+            <i class="fas fa-edit"></i>
+          </button>
+        </a>
+      </td>
+    </tr>
+
+    <% }) %>
+  </tbody>
+</table>
+<% if(token>1) { %>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item <%= previous%>">
+      <a class="page-link" href="/dashboard?page=<%= page-1 %>" tabindex="-1"
+        >Previous</a
+      >
+    </li>
+    <%for(i=1; i<=token; i++){%> <%if(i == page) { %>
+    <li class="page-item disabled">
+      <a class="page-link" href="/dashboard?page=<%= i %>"><%= i%></a>
+    </li>
+    <%} else {%>
+    <li class="page-item">
+      <a class="page-link" href="/dashboard?page=<%= i %>"><%= i%></a>
+    </li>
+    <%}}%>
+
+    <li class="page-item <%= next%>">
+      <a class="page-link" href="/dashboard?page=<%= page+1 %>">Next</a>
+    </li>
+  </ul>
+</nav>
+<% } %>
